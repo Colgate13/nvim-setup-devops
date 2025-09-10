@@ -1,0 +1,42 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'sheerun/vim-polyglot'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+" Plugin do nvim-tree
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons' " (ícones, opcional)
+
+call plug#end()
+
+" Configuração básica do nvim-tree
+lua << EOF
+require("nvim-tree").setup()
+EOF
+
+syntax on
+set number
+set relativenumber
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set mouse=a
+colorscheme dracula
+
+" Salvar com Ctrl+S
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>gi
+
+" Salvar e sair com Ctrl+Q
+nnoremap <C-q> :wq<CR>
+inoremap <C-q> <Esc>:wq<CR>
+
+" Abrir explorador com Leader + e (normalmente \e)
+nnoremap <leader>e :Ex<CR>
+
+" Atalho para abrir/fechar a árvore com Ctrl+E
+nnoremap <C-e> :NvimTreeToggle<CR>
+
+" Ctrl+E para abrir o explorador de arquivos (netrw)
+" nnoremap <C-e> :Ex<CR>
